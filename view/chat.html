@@ -124,6 +124,7 @@
         function enterChat(name) {
             localStorage.setItem('chat_username', name);
             localStorage.setItem('chat_firstname', name);
+            $('#nameModal').find('button, a').off('click');
             $('#nameModal').fadeOut(200, function () {
                 initChat(name);
             });
@@ -356,7 +357,7 @@
             }
 
             function showNotification(msg) {
-                const toast = $(`<div class="notification">${msg}</div>`);
+                const toast = $('<div class="notification"></div>').text(msg);
                 $('body').append(toast);
                 setTimeout(() => toast.fadeOut(400, function () { $(this).remove(); }), 3000);
             }
