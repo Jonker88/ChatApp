@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
 
   socket.on('joinRoom', (room) => {
     const user = onlineUsers[socket.id];
-    if (!user) return;
+    if (!user || !ROOMS.includes(room)) return;
     if (user.room) {
       socket.leave(user.room);
       io.to(user.room).emit('roomMessage', { from_user: 'System', message: `${user.username} has left the room`, date_sent: new Date() });
@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
   socket.on('typing', (data) => {
     const user = onlineUsers[socket.id];
     if (!user) return;
-    if (data.to_user) {
+    if (data && data.to_user) {
       const rid = Object.keys(onlineUsers).find(id => onlineUsers[id].username === data.to_user);
       if (rid) io.to(rid).emit('typing', { from_user: user.username });
     } else if (user.room) {
