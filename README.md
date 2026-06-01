@@ -1,4 +1,4 @@
-﻿# 101480537 Lab Test 1 - Real-Time Chat Application
+﻿ Real-Time Chat Application
 
 A real-time chat application built with **Socket.io**, **Express**, **Mongoose**, and **Bootstrap**. Supports user authentication, room-based group messaging, private 1-on-1 messaging, typing indicators, and light/dark theme switching.
 
