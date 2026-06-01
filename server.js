@@ -28,6 +28,10 @@ function addPrivateMessage(msg) {
   if (messageStore.private.length > MAX_MESSAGES * 10) messageStore.private.shift();
 }
 
+app.get('/', (req, res) => {
+  res.redirect('/chat.html');
+});
+
 app.get('/api/rooms', (req, res) => {
   res.json(ROOMS);
 });
